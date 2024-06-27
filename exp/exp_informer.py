@@ -75,7 +75,7 @@ class Exp_Informer(Exp_Basic):
 
         if flag == 'test':
             shuffle_flag = False; drop_last = True; batch_size = args.batch_size; freq=args.freq
-        elif flag=='pred':
+        elif flag=='pred':                ##预测用单独的模块
             shuffle_flag = False; drop_last = False; batch_size = 1; freq=args.detail_freq
             Data = Dataset_Pred
         else:
@@ -282,7 +282,7 @@ class Exp_Informer(Exp_Basic):
             else:
                 outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
         if self.args.inverse:
-            outputs = dataset_object.inverse_transform(outputs)
+            outputs = dataset_object.inverse_transform(outputs)   ##类中记录了原始信息，逆变换
         f_dim = -1 if self.args.features=='MS' else 0
         batch_y = batch_y[:,-self.args.pred_len:,f_dim:].to(self.device)
 
