@@ -51,6 +51,7 @@ parser.add_argument('--des', type=str, default='test',help='exp description')
 parser.add_argument('--loss', type=str, default='mse',help='loss function')
 parser.add_argument('--lradj', type=str, default='type1',help='adjust learning rate')
 parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
+## 在训练过程中自动混合使用半精度（16-bit）和单精度（32-bit）浮点数，以加速深度学习模型的训练并减少显存占用。AMP 训练的主要目标是提高计算效率和减少显存使用，同时尽量不损失模型的精度。
 parser.add_argument('--inverse', action='store_true', help='inverse output data', default=False)
 
 parser.add_argument('--use_gpu', type=bool, default=True, help='use gpu')
